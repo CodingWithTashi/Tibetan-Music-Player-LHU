@@ -27,18 +27,12 @@ class _ShowUpAnimationState extends State<ShowUpAnimation>
     _animOffset = Tween<Offset>(begin: const Offset(0.0, 1), end: Offset.zero)
         .animate(curve);
 
-    if (widget.delay == null) {
-      _animController.forward();
-    } else {
-      Timer(Duration(milliseconds: widget.delay), () {
-        _animController.forward();
-      });
-    }
+    _animController.forward();
   }
 
   @override
   void dispose() {
-    _animController.dispose();
+    if (mounted) _animController.dispose();
     super.dispose();
   }
 

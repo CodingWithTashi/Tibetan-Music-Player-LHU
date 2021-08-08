@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:lhu_tibetan_music_app/repository/auth_repository.dart';
 import 'package:meta/meta.dart';
 
@@ -22,5 +23,9 @@ class AuthCubit extends Cubit<AuthState> {
         emit(AuthInitial());
       });
     }
+  }
+
+  Stream<User?> authStateListener() {
+    return authRepository.authChangeListener();
   }
 }

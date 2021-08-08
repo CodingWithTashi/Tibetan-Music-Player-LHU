@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lhu_tibetan_music_app/animation/show_down_anim.dart';
 import 'package:lhu_tibetan_music_app/animation/show_left_anim.dart';
 import 'package:lhu_tibetan_music_app/animation/show_up_anim.dart';
+import 'package:lhu_tibetan_music_app/bloc/auth_cubit.dart';
 import 'package:lhu_tibetan_music_app/presentation/screens/on_boarding_page.dart';
 import 'package:lhu_tibetan_music_app/utils/app_constant.dart';
 
@@ -16,7 +18,8 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
       // Navigator.pop(context);
-      Navigator.pushNamed(context, OnBoardingPage.routeName);
+      if (mounted)
+        Navigator.pushReplacementNamed(context, OnBoardingPage.routeName);
     });
     super.initState();
   }
@@ -105,9 +108,18 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
               SizedBox(
                 height: 5,
               ),
-              Text(
-                'Loading...',
-                style: TextStyle(color: Colors.white, fontSize: 14),
+              BlocBuilder<AuthCubit, AuthState>(
+                builder: (context, state) {
+                  if (state is AuthLogout)
+                    return Text(
+                      'Logging out...',
+                      style: TextStyle(color: Colors.white, fontSize: 14),
+                    );
+                  return Text(
+                    'Loading...',
+                    style: TextStyle(color: Colors.white, fontSize: 14),
+                  );
+                },
               )
             ],
           ),

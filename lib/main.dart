@@ -31,11 +31,12 @@ class MyApp extends StatelessWidget {
           },
           child: MaterialApp(
             title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
               primarySwatch:
                   ApplicationUtil.createMaterialColor(Color(0xff795C22)),
             ),
-            initialRoute: '/login',
+            initialRoute: '/',
             onGenerateRoute: RouteGenerator.generateRoute,
           ),
         ),

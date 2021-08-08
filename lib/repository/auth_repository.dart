@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/src/widgets/async.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthRepository {
@@ -20,5 +21,9 @@ class FirebaseAuthRepository {
       idToken: googleAuth.idToken,
     );
     return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
+
+  Stream<User?> authChangeListener() {
+    return FirebaseAuth.instance.authStateChanges();
   }
 }

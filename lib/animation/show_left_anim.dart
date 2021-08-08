@@ -26,20 +26,14 @@ class _ShowLeftAnimationState extends State<ShowLeftAnimation>
         CurvedAnimation(curve: Curves.decelerate, parent: _animController);
     _animOffset = Tween<Offset>(begin: const Offset(1, 1), end: Offset.zero)
         .animate(curve);
-
-    if (widget.delay == null) {
-      _animController.forward();
-    } else {
-      Timer(Duration(milliseconds: widget.delay), () {
-        _animController.forward();
-      });
-    }
+    _animController.forward();
   }
 
   @override
   void dispose() {
+    if (mounted) _animController.dispose();
+
     super.dispose();
-    _animController.dispose();
   }
 
   @override

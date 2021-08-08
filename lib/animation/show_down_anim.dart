@@ -28,19 +28,14 @@ class _ShowDownAnimationState extends State<ShowDownAnimation>
         Tween<Offset>(begin: const Offset(0.0, -1.0), end: Offset.zero)
             .animate(curve);
 
-    if (widget.delay == null) {
-      _animController.forward();
-    } else {
-      Timer(Duration(milliseconds: widget.delay), () {
-        _animController.forward();
-      });
-    }
+    _animController.forward();
   }
 
   @override
   void dispose() {
+    if (mounted) _animController.dispose();
+
     super.dispose();
-    _animController.dispose();
   }
 
   @override

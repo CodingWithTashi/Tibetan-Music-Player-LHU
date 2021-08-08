@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lhu_tibetan_music_app/bloc/auth_cubit.dart';
@@ -10,12 +11,27 @@ import 'package:lhu_tibetan_music_app/repository/auth_repository.dart';
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case '/':
+        return MaterialPageRoute(
+          builder: (context) => StreamBuilder<User?>(
+              stream: context.read<AuthCubit>().authStateListener(),
+              builder: (context, snapshot) {
+                if (snapshot.data != null) return HomePage();
+                return SplashScreenPage();
+              }),
+        );
       case '/splash':
-        return MaterialPageRoute(builder: (_) => SplashScreenPage());
+        return MaterialPageRoute(
+          builder: (_) => SplashScreenPage(),
+        );
       case '/on-board':
-        return MaterialPageRoute(builder: (_) => OnBoardingPage());
+        return MaterialPageRoute(
+          builder: (_) => OnBoardingPage(),
+        );
       case '/login':
-        return MaterialPageRoute(builder: (_) => LoginPage());
+        return MaterialPageRoute(
+          builder: (_) => LoginPage(),
+        );
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

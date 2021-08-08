@@ -70,7 +70,7 @@ class _LoginPageState extends State<LoginPage> {
                             children: [
                               Container(
                                 alignment: Alignment.bottomCenter,
-                                height: 400,
+                                constraints: BoxConstraints(maxHeight: 600),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10),
@@ -133,9 +133,84 @@ class _LoginPageState extends State<LoginPage> {
                                 padding: EdgeInsets.symmetric(vertical: 20),
                                 child: Image.asset(
                                   ApplicationUtil.getImage('login.png'),
-                                  height: 280,
+                                  height: 300,
                                   width: 250,
                                 ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Card(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10),
+                          child: Column(
+                            children: [
+                              Container(
+                                child: Text(
+                                  'More app from kharag edition',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w400,
+                                      color: Theme.of(context).primaryColor),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(children: <Widget>[
+                                  Card(
+                                    child: Container(
+                                      child: Image.asset(
+                                        ApplicationUtil.getImage('music.png'),
+                                        height: 70,
+                                        width: 70,
+                                      ),
+                                    ),
+                                  ),
+                                  Card(
+                                    child: Container(
+                                      child: Image.asset(
+                                        ApplicationUtil.getImage('music.png'),
+                                        height: 70,
+                                        width: 70,
+                                      ),
+                                    ),
+                                  ),
+                                  Card(
+                                    child: Container(
+                                      child: Image.asset(
+                                        ApplicationUtil.getImage('music.png'),
+                                        height: 70,
+                                        width: 70,
+                                      ),
+                                    ),
+                                  ),
+                                  Card(
+                                    child: Container(
+                                      child: Image.asset(
+                                        ApplicationUtil.getImage('music.png'),
+                                        height: 70,
+                                        width: 70,
+                                      ),
+                                    ),
+                                  ),
+                                  Card(
+                                    child: Container(
+                                      child: Image.asset(
+                                        ApplicationUtil.getImage('music.png'),
+                                        height: 70,
+                                        width: 70,
+                                      ),
+                                    ),
+                                  )
+                                ]),
                               ),
                             ],
                           ),
@@ -152,11 +227,49 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget _buildInputButton() => SignInButton(
-        Buttons.Google,
-        text: "Sign in with Google",
-        onPressed: () async {
-          await authCubit.signInWithGmail();
-        },
+  Widget _buildInputButton() => Column(
+        children: [
+          TextField(
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              filled: true,
+              hintText: "Enter email",
+              prefixIcon: Icon(Icons.person),
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          TextField(
+            decoration: InputDecoration(
+                prefixIcon: Icon(Icons.security),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
+                hintStyle: TextStyle(color: Colors.grey[800]),
+                hintText: "Enter Password",
+                fillColor: Colors.white70),
+            obscureText: true,
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ElevatedButton(
+            onPressed: () {},
+            child: Text(' Login with Email & Password '),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          SignInButton(
+            Buttons.Google,
+            text: "Sign in with Google",
+            onPressed: () async {
+              await authCubit.signInWithGmail();
+            },
+          ),
+        ],
       );
 }

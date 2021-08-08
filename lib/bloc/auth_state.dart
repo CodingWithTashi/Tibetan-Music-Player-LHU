@@ -11,6 +11,10 @@ class AuthLoading extends AuthState {
   AuthLoading();
 }
 
+class AuthLogout extends AuthState {
+  AuthLogout();
+}
+
 class AuthLoaded extends AuthState {
   final UserCredential credential;
   AuthLoaded(this.credential);
