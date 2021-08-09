@@ -33,9 +33,10 @@ class MyApp extends StatelessWidget {
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
-              primarySwatch:
-                  ApplicationUtil.createMaterialColor(Color(0xff795C22)),
-            ),
+                primarySwatch: ApplicationUtil.createMaterialColor(
+                  Color(0xff795C22),
+                ),
+                primaryColorLight: Color(0xffF6C970)),
             initialRoute: '/',
             onGenerateRoute: RouteGenerator.generateRoute,
           ),

@@ -31,38 +31,74 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     double _w = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Color(0xffF5F5F5),
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Theme.of(context).primaryColor,
-        brightness: Brightness.dark,
-        elevation: 0,
-        title: Text('LHU (Tibetan Music App)'),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            tooltip: 'Settings',
-            enableFeedback: true,
-            icon: Icon(
-              CupertinoIcons.gear_alt_fill,
-            ),
-            onPressed: () {},
-          ),
-        ],
-      ),
-      body: Stack(
-        children: [
-          ApplicationUtil.getAppbarCurvePainter(context),
-          Center(
-            child: Container(
-              constraints: BoxConstraints(maxWidth: 500),
-              child: SingleChildScrollView(
+      backgroundColor: Theme.of(context).primaryColor,
+
+      //backgroundColor: Color(0xffF5F5F5),
+
+      body: Center(
+        child: Container(
+          alignment: Alignment.topCenter,
+          constraints: BoxConstraints(maxWidth: 500),
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).padding.top + 20,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.symmetric(vertical: 25),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          color: Theme.of(context)
+                              .primaryColorLight
+                              .withOpacity(0.4),
+                          offset: Offset(7, 7),
+                          spreadRadius: 5,
+                          blurRadius: 10),
+                      BoxShadow(
+                          color: Colors.black,
+                          offset: Offset(-3, -4),
+                          spreadRadius: -2,
+                          blurRadius: 10),
+                    ],
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                      child: Text(
+                    'LHU (Tibetan Music App)',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  )),
+                ),
+              ),
+              SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                   child: Column(
                     children: [
-                      Card(
-                        shape: RoundedRectangleBorder(
+                      Container(
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: Theme.of(context)
+                                    .primaryColorLight
+                                    .withOpacity(0.4),
+                                offset: Offset(7, 7),
+                                spreadRadius: 5,
+                                blurRadius: 10),
+                            BoxShadow(
+                                color: Colors.black,
+                                offset: Offset(-3, -4),
+                                spreadRadius: -2,
+                                blurRadius: 10),
+                          ],
+                          color: Theme.of(context).primaryColor,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Container(
@@ -70,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                             children: [
                               Container(
                                 alignment: Alignment.bottomCenter,
-                                constraints: BoxConstraints(maxHeight: 600),
+                                constraints: BoxConstraints(maxHeight: 400),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10),
@@ -141,13 +177,31 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                      Card(
-                        shape: RoundedRectangleBorder(
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                color: Theme.of(context)
+                                    .primaryColorLight
+                                    .withOpacity(0.4),
+                                offset: Offset(7, 7),
+                                spreadRadius: 5,
+                                blurRadius: 10),
+                            BoxShadow(
+                                color: Colors.black,
+                                offset: Offset(-3, -4),
+                                spreadRadius: -2,
+                                blurRadius: 10),
+                          ],
+                          color: Theme.of(context).primaryColor,
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Container(
                           padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 10),
+                              horizontal: 20, vertical: 20),
                           child: Column(
                             children: [
                               Container(
@@ -156,7 +210,7 @@ class _LoginPageState extends State<LoginPage> {
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.w400,
-                                      color: Theme.of(context).primaryColor),
+                                      color: Colors.white),
                                 ),
                               ),
                               SizedBox(
@@ -169,8 +223,8 @@ class _LoginPageState extends State<LoginPage> {
                                     child: Container(
                                       child: Image.asset(
                                         ApplicationUtil.getImage('music.png'),
-                                        height: 70,
-                                        width: 70,
+                                        height: 80,
+                                        width: 80,
                                       ),
                                     ),
                                   ),
@@ -178,8 +232,8 @@ class _LoginPageState extends State<LoginPage> {
                                     child: Container(
                                       child: Image.asset(
                                         ApplicationUtil.getImage('music.png'),
-                                        height: 70,
-                                        width: 70,
+                                        height: 80,
+                                        width: 80,
                                       ),
                                     ),
                                   ),
@@ -187,8 +241,8 @@ class _LoginPageState extends State<LoginPage> {
                                     child: Container(
                                       child: Image.asset(
                                         ApplicationUtil.getImage('music.png'),
-                                        height: 70,
-                                        width: 70,
+                                        height: 80,
+                                        width: 80,
                                       ),
                                     ),
                                   ),
@@ -196,8 +250,8 @@ class _LoginPageState extends State<LoginPage> {
                                     child: Container(
                                       child: Image.asset(
                                         ApplicationUtil.getImage('music.png'),
-                                        height: 70,
-                                        width: 70,
+                                        height: 80,
+                                        width: 80,
                                       ),
                                     ),
                                   ),
@@ -205,12 +259,15 @@ class _LoginPageState extends State<LoginPage> {
                                     child: Container(
                                       child: Image.asset(
                                         ApplicationUtil.getImage('music.png'),
-                                        height: 70,
-                                        width: 70,
+                                        height: 80,
+                                        width: 80,
                                       ),
                                     ),
                                   )
                                 ]),
+                              ),
+                              SizedBox(
+                                height: 10,
                               ),
                             ],
                           ),
@@ -220,16 +277,16 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-            ),
-          )
-        ],
+            ],
+          ),
+        ),
       ),
     );
   }
 
   Widget _buildInputButton() => Column(
         children: [
-          TextField(
+          /*TextField(
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
@@ -259,7 +316,7 @@ class _LoginPageState extends State<LoginPage> {
           ElevatedButton(
             onPressed: () {},
             child: Text(' Login with Email & Password '),
-          ),
+          ),*/
           SizedBox(
             height: 10,
           ),
