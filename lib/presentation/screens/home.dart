@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
-      appBar: AppBar(
+      /* appBar: AppBar(
         elevation: 0,
         actions: [
           Container(
@@ -51,34 +51,27 @@ class _HomePageState extends State<HomePage> {
             },
           ),
         ],
-      ),
+      ),*/
       body: Center(
         child: Container(
           alignment: Alignment.topCenter,
           constraints: BoxConstraints(maxWidth: 500),
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                alignment: Alignment.bottomCenter,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    NavBarItem(
-                      icon: Icons.arrow_back_ios,
-                    ),
-                    NavBarItem(
-                      icon: Icons.list,
-                    )
-                  ],
-                ),
-              ),
-              ListView.builder(
-                physics: ScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: 5,
-                itemBuilder: (context, index) {
-                  return Container(
+          child: Container(
+            child: ListView.builder(
+              physics: BouncingScrollPhysics(
+                  parent: AlwaysScrollableScrollPhysics()),
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PlayerPage(),
+                      ),
+                    );
+                  },
+                  child: Container(
                     padding: EdgeInsets.all(10),
                     margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     child: ListTile(
@@ -121,11 +114,32 @@ class _HomePageState extends State<HomePage> {
                             blurRadius: 15),
                       ],
                     ),
-                  );
-                },
-              )
-            ],
+                  ),
+                );
+              },
+            ),
           ),
+        ),
+      ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterDocked,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.play_arrow_rounded),
+        onPressed: () {},
+      ),
+      bottomNavigationBar: Container(
+        decoration: ApplicationUtil.getBoxDecorationOne(context),
+        child: BottomNavigationBar(
+          elevation: 10,
+          backgroundColor: Theme.of(context).primaryColor,
+          selectedItemColor: Colors.white,
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.queue_music_sharp), label: 'Favourite'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.settings), label: 'Account')
+          ],
         ),
       ),
     );

@@ -27,6 +27,25 @@ class ApplicationUtil {
       );
 
   static String getImage(String imageName) => 'assets/images/' + imageName;
+
+  static getBoxDecorationOne(BuildContext context) {
+    return BoxDecoration(
+      color: Theme.of(context).primaryColor,
+      borderRadius: BorderRadius.circular(20),
+      boxShadow: [
+        BoxShadow(
+            color: Theme.of(context).primaryColorLight.withOpacity(0.3),
+            offset: Offset(5, 5),
+            spreadRadius: 3,
+            blurRadius: 20),
+        BoxShadow(
+            color: Colors.black,
+            offset: Offset(-5, -3),
+            spreadRadius: -4,
+            blurRadius: 15),
+      ],
+    );
+  }
 }
 
 class AppBarCurvePainter extends CustomPainter {

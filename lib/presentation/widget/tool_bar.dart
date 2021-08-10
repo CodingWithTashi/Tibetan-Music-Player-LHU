@@ -11,6 +11,7 @@ class NavigationBar extends StatelessWidget {
         children: <Widget>[
           NavBarItem(
             icon: Icons.arrow_back_ios,
+            onClick: () {},
           ),
           Text(
             'Playing Now',
@@ -21,6 +22,7 @@ class NavigationBar extends StatelessWidget {
           ),
           NavBarItem(
             icon: Icons.list,
+            onClick: () {},
           )
         ],
       ),
@@ -30,8 +32,10 @@ class NavigationBar extends StatelessWidget {
 
 class NavBarItem extends StatelessWidget {
   final IconData icon;
+  final Function onClick;
 
-  const NavBarItem({Key? key, required this.icon}) : super(key: key);
+  const NavBarItem({Key? key, required this.icon, required this.onClick})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +58,12 @@ class NavBarItem extends StatelessWidget {
         color: Theme.of(context).primaryColor,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Icon(
-        icon,
-        color: Theme.of(context).primaryColorLight,
+      child: InkWell(
+        onTap: () => onClick,
+        child: Icon(
+          icon,
+          color: Theme.of(context).primaryColorLight,
+        ),
       ),
     );
   }
