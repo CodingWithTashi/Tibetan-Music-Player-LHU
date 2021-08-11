@@ -133,12 +133,15 @@ class _HomePageState extends State<HomePage> {
           elevation: 10,
           backgroundColor: Theme.of(context).primaryColor,
           selectedItemColor: Colors.white,
+          type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.queue_music_sharp), label: 'Favourite'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.settings), label: 'Account')
+                icon: Icon(Icons.settings), label: 'Account'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.notifications), label: 'Notification'),
           ],
         ),
       ),
